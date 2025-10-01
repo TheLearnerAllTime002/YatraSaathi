@@ -117,31 +117,33 @@ class LanguageTranslator {
 
     async translatePage(targetLang) {
         const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, button');
+        const textNodes = [];
         const texts = [];
-        const elementsToTranslate = [];
 
         elements.forEach(el => {
-            const original = originalTexts.get(el);
-            if (original && !el.closest('.lang_dropdown')) {
-                // Extract only text content for translation
-                const textOnly = el.textContent.trim();
-                texts.push(textOnly);
-                elementsToTranslate.push(el);
+            if (!el.closest('.lang_dropdown')) {
+                const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+                let node;
+                while(node = walker.nextNode()) {
+                    if (node.nodeValue.trim()) {
+                        textNodes.push(node);
+                        texts.push(node.nodeValue.trim());
+                    }
+                }
             }
         });
 
         if (texts.length > 0) {
-            const translations = await this.translateText(texts, targetLang);
-            elementsToTranslate.forEach((el, i) => {
-                if (translations[i]) {
-                    // For span elements, preserve the HTML structure
-                    if (el.tagName === 'SPAN' && el.parentElement.classList.contains('title')) {
-                        el.textContent = translations[i];
-                    } else {
-                        el.textContent = translations[i];
+            try {
+                const translations = await this.translateText(texts, targetLang);
+                textNodes.forEach((node, i) => {
+                    if (translations[i]) {
+                        node.nodeValue = node.nodeValue.replace(node.nodeValue.trim(), translations[i]);
                     }
-                }
-            });
+                });
+            } catch (error) {
+                console.error('Translation failed for a batch:', error);
+            }
         }
 
         // Translate placeholders
@@ -150,9 +152,13 @@ class LanguageTranslator {
             const originalKey = `${el.id || el.className}_placeholder`;
             const original = originalTexts.get(originalKey);
             if (original) {
-                const translated = await this.translateText([original], targetLang);
-                if (translated[0]) {
-                    el.placeholder = translated[0];
+                try {
+                    const translated = await this.translateText([original], targetLang);
+                    if (translated[0]) {
+                        el.placeholder = translated[0];
+                    }
+                } catch (error) {
+                    console.error('Placeholder translation failed:', error);
                 }
             }
         }
@@ -206,24 +212,29 @@ window.translateUI = async function(element) {
     if (currentLang === 'en') return;
     
     const translator = new LanguageTranslator();
-    const elements = element.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, button');
+    const textNodes = [];
     const texts = [];
-    const elementsToTranslate = [];
-    
-    elements.forEach(el => {
-        if (el.textContent.trim()) {
-            texts.push(el.textContent.trim());
-            elementsToTranslate.push(el);
+
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    while(node = walker.nextNode()) {
+        if (node.nodeValue.trim()) {
+            textNodes.push(node);
+            texts.push(node.nodeValue.trim());
         }
-    });
+    }
 
     if (texts.length > 0) {
-        const translations = await translator.translateText(texts, currentLang);
-        elementsToTranslate.forEach((el, i) => {
-            if (translations[i]) {
-                el.textContent = translations[i];
-            }
-        });
+        try {
+            const translations = await translator.translateText(texts, currentLang);
+            textNodes.forEach((node, i) => {
+                if (translations[i]) {
+                    node.nodeValue = node.nodeValue.replace(node.nodeValue.trim(), translations[i]);
+                }
+            });
+        } catch (error) {
+            console.error('Dynamic content translation failed:', error);
+        }
     }
 };
 

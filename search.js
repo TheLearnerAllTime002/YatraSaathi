@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </h3>
                 <div class="weather_current">
                     <div class="weather_location">${weather.city?.name || query}</div>
-                    <div class="weather_temp">${Math.round(weather.list[0].main.temp)}°C</div>
+                    <div class="weather_temp"><span class="counter" data-target="${Math.round(weather.list[0].main.temp)}">0</span>°C</div>
                     <div class="weather_desc">${weather.list[0].weather[0].description}</div>
                     <div class="weather_details">
                         <div class="weather_detail">
@@ -346,5 +346,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, index * 200);
             });
         }, 100);
+
+        // Animate counters
+        animateCounters(resultsContainer);
     }
 });

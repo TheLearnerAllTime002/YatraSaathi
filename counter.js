@@ -1,9 +1,10 @@
 // Counter Animation
-function animateCounters() {
-    const counters = document.querySelectorAll('.counter');
+function animateCounters(parentElement) {
+    const counters = parentElement.querySelectorAll('.counter:not(.animated)');
     counters.forEach(counter => {
+        counter.classList.add('animated');
         const target = parseFloat(counter.getAttribute('data-target'));
-        const increment = target / 50;
+        const increment = target > 0 ? target / 50 : 1;
         let current = 0;
         
         const timer = setInterval(() => {
@@ -21,8 +22,8 @@ function animateCounters() {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            setTimeout(animateCounters, 500);
-            observer.disconnect();
+            setTimeout(() => animateCounters(entry.target), 500);
+            observer.unobserve(entry.target);
         }
     });
 }, { threshold: 0.5 });
