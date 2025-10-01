@@ -4,29 +4,35 @@ const observerOptions = {
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, observerOptions);
+let scrollObserver;
 
-// Initialize animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+function initScrollReveal() {
+    // Disconnect existing observer if it exists
+    if (scrollObserver) {
+        scrollObserver.disconnect();
+    }
+
+    scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
     // Home section animations
     const homeContent = document.querySelector('.home_content');
     const homeCards = document.querySelectorAll('.home_card');
     
     if (homeContent) {
         homeContent.classList.add('reveal-left');
-        observer.observe(homeContent);
+        scrollObserver.observe(homeContent);
     }
     
     homeCards.forEach((card, index) => {
         card.classList.add('reveal-right');
         card.style.transitionDelay = `${index * 0.2}s`;
-        observer.observe(card);
+        scrollObserver.observe(card);
     });
 
     // About section animations
@@ -36,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     aboutCards.forEach((card, index) => {
         card.classList.add('reveal-scale');
         card.style.transitionDelay = `${index * 0.3}s`;
-        observer.observe(card);
+        scrollObserver.observe(card);
     });
     
     if (aboutContent) {
         aboutContent.classList.add('reveal-right');
-        observer.observe(aboutContent);
+        scrollObserver.observe(aboutContent);
     }
 
     // Destinations section animations
@@ -50,12 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (destinationsContent) {
         destinationsContent.classList.add('reveal-left');
-        observer.observe(destinationsContent);
+        scrollObserver.observe(destinationsContent);
     }
     
     if (destinationsSwiper) {
         destinationsSwiper.classList.add('reveal-right');
-        observer.observe(destinationsSwiper);
+        scrollObserver.observe(destinationsSwiper);
     }
 
     // Services section animations
@@ -65,18 +71,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (servicesContent) {
         servicesContent.classList.add('reveal');
-        observer.observe(servicesContent);
+        scrollObserver.observe(servicesContent);
     }
     
     if (servicesManImg) {
         servicesManImg.classList.add('reveal-left');
-        observer.observe(servicesManImg);
+        scrollObserver.observe(servicesManImg);
     }
     
     servicesCards.forEach((card, index) => {
         card.classList.add('reveal-right');
         card.style.transitionDelay = `${index * 0.2}s`;
-        observer.observe(card);
+        scrollObserver.observe(card);
     });
 
     // Subscribe section animations
@@ -84,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (subscribeContainer) {
         subscribeContainer.classList.add('reveal-scale');
-        observer.observe(subscribeContainer);
+        scrollObserver.observe(subscribeContainer);
     }
 
     // Footer section animations
@@ -93,6 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
     footerSections.forEach((section, index) => {
         section.classList.add('reveal');
         section.style.transitionDelay = `${index * 0.2}s`;
-        observer.observe(section);
+        scrollObserver.observe(section);
     });
-});
+}
+
+// Initialize animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', initScrollReveal);
+
+// Reinitialize after translation
+window.reinitScrollReveal = initScrollReveal;
