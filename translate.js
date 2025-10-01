@@ -1,6 +1,6 @@
 // Google Translate API Integration
-const API_KEY = 'AIzaSyDm6Z6SoVgUiyjxEbSemS_ZtbZGZ3JnOdI';
-const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2';
+const API_KEY = window.API_CONFIG?.TRANSLATION_SERVICE_KEY || '';
+const TRANSLATE_URL = window.API_CONFIG?.TRANSLATION_ENDPOINT || '';
 
 const LANGUAGES = [
     { code: 'en', label: 'English' },
