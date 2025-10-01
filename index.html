@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatra Sathi | Travel Website</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-quote.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <h1 class="header_title">Yatra<span> Sathi</span></h1>
+        <ul class="header_nav" id="headerNav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#destination">Destinations</a></li>
+            <li><a href="#services">Services</a></li>
+        </ul>
+
+        <!-- for mobile screen -->
+        <div class="header_menu" id="toggleMenu">
+            <i class="fa-solid fa-bars" id="bars"></i>
+            <i class="fa-solid fa-xmark" id="xmark"></i>
+        </div>
+    </header>
+
+    <!-- Home -->
+    <section class="home" id="home">
+        <div class="home_content">
+            <h2 class="home_small-title small-title">Yatra<span> Sathi</span></h2>
+            <h1 class="home_title title">Find Your Next Dream Destinations</h1>
+            <p class="home_desc desc">Embark on extraordinary adventures and discover breathtaking destinations around the world. Let us guide you to your next unforgettable journey with personalized travel experiences.</p>
+            <a href="#about">
+                <button class="home_content-btn">
+                    <span>Explore</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </a>
+        </div>
+
+        <div class="home_cards">
+            <div class="home_card home_card-1">
+                <h3 class="home_card-title">Penida Island</h3>
+            </div>
+            <div class="home_card home_card-2">
+                <h3 class="home_card-title">Khao Sok</h3>
+            </div>
+            <div class="home_card home_card-3">
+                <h3 class="home_card-title">Koh Tonsay</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about_cards">
+            <div class="about_card about_card-1"></div>
+            <div class="about_card about_card-2">
+                <img src="images/plane.png" class="about_card-2-plane-img">
+            </div>
+            <div class="about_card about_card-3"></div>
+        </div>
+
+        <div class="about_content">
+            <h2 class="about_small-title small-title">About Us</h2>
+            <h1 class="about_title title">About <span>Our Travel</span></h1>
+            <p class="about_desc" desc">We are passionate travel experts dedicated to creating extraordinary journeys and unforgettable experiences for adventurers worldwide.</p>
+            <div class="about_stats">
+                <button class="about_stat about_stat-btn-1">
+                    <i class="fa-solid fa-earth-asia"></i>
+                    <span>50+ Destinations</span>
+                </button>
+                <button class="about_stat about_stat-btn-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>20+ Tour Guides</span>
+                </button>
+            </div>
+        </div>
+
+        <img src="images/travel.png" class="about_travel-img">
+    </section>
+
+    <!-- Destinations -->
+    <section class="destinations" id="destination">
+        <div class="destinations_content">
+            <h2 class="destinations_small-title small-title">
+                Find Destinations
+            </h2>
+            <h1 class="destinhtions_title title">
+                Popular <span>Destinations</span>
+            </h1>
+            <p class="destinations_desc desc">
+                Discover breathtaking destinations around the world with our carefully curated travel packages. From exotic beaches to mountain adventures, we have the perfect getaway for every traveler.
+            </p>
+            
+            <!-- Modern Search Bar -->
+            <div class="search_container">
+                <div class="search_bar">
+                    <i class="fa-solid fa-location-dot search_icon"></i>
+                    <input type="text" id="searchInput" class="search_input" placeholder="Search destinations...">
+                    <button id="searchBtn" class="search_btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="view_more_container">
+                <button class="destinations_content-btn enhanced">
+                    <span>Explore Popular Destinations</span>
+                    <i class="fa-solid fa-compass"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="destinations_swiper">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="swiper-slide_container">
+                            <img src="images/penida-island.jpg">
+                            <div class="swiper-slide_content">
+                                <div class="swiper-slide_left">
+                                    <h3 class="swiper-slide_content-title">Penida Island</h3>
+                                    <span class="swiper-slide_content-price">₹10,000</span>
+                                </div>
+                                <div class="swiper-slide_right">
+                                    <span class="swiper-slide_content-rating">4.9
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="swiper-slide_container">
+                            <img src="images/khao-sok.jpg">
+                            <div class="swiper-slide_content">
+                                <div class="swiper-slide_left">
+                                    <h3 class="swiper-slide_content-title">Khao Sok</h3>
+                                    <span class="swiper-slide_content-price">₹10,000</span>
+                                </div>
+                                <div class="swiper-slide_right">
+                                    <span class="swiper-slide_content-rating">4.9
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="swiper-slide_container">
+                            <img src="images/koh-tonsay.jpg">
+                            <div class="swiper-slide_content">
+                                <div class="swiper-slide_left">
+                                    <h3 class="swiper-slide_content-title">Koh Tonsay</h3>
+                                    <span class="swiper-slide_content-price">₹10,000</span>
+                                </div>
+                                <div class="swiper-slide_right">
+                                    <span class="swiper-slide_content-rating">4.9
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="swiper-slide_container">
+                            <img src="images/twin-lagon.jpg">
+                            <div class="swiper-slide_content">
+                                <div class="swiper-slide_left">
+                                    <h3 class="swiper-slide_content-title">Twin Lagon</h3>
+                                    <span class="swiper-slide_content-price">₹10,000</span>
+                                </div>
+                                <div class="swiper-slide_right">
+                                    <span class="swiper-slide_content-rating">4.9
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="search_results" id="searchResults" style="display: none;">
+        <button class="close_search" id="closeSearch">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="search_results_content">
+            <h2 class="search_results_title">Search Results</h2>
+            <div id="searchResultsContainer" class="search_results_container">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <img class= "services_man-img" src="images/man.png">
+        <div class="services_circle"></div>
+        <div class="services_content">
+            <h1 class="title">Our <span>Services</span></h1>
+            <p class="desc">We provide comprehensive travel services to make your journey seamless and memorable. From flight bookings to guided tours, we handle every detail of your adventure.</p>
+        </div>
+        <div class="services_cards">
+            <div class="services_card">
+                <i class="fa-solid fa-paper-plane"></i>
+                <div>
+                    <h3>Tour Guide</h3>
+                    <span>Expert local guides to show you hidden gems and share fascinating stories about your destination.</span>
+                </div>
+            </div>
+        </div>
+        <div class="services_cards">
+            <div class="services_card">
+                <i class="fa-solid fa-plane"></i>
+                <div>
+                    <h3>Flight Booking</h3>
+                    <span>Easy and secure flight reservations with competitive prices and flexible booking options.</span>
+                </div>
+            </div>
+        </div>
+        <div class="services_cards">
+            <div class="services_card">
+                <i class="fa-solid fa-bed"></i>
+                <div>
+                    <h3>Hotel Stay</h3>
+                    <span>Comfortable accommodations ranging from budget-friendly to luxury hotels worldwide.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe -->
+    <section class="subscribe">
+        <div class="subscribe_container">
+            <img class="subscribe_plane-img" src="images/plane-3d.png">
+            <div class="subscribe_content">
+            <h1 class="title">Subscribe to Our Newslatter</h1>
+            <p class="desc">Stay updated with the latest travel deals, destination guides, and exclusive offers. Join our community of wanderers and never miss an adventure!</p>
+            <div class="subscribe_input-container">
+                <input type="email" class="subscribe_input" placeholder="your@mail.com">
+                <button class="subscribe_btn">Subscribe Us</button>
+            </div>
+        </div>
+        </div>
+        
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer_content">
+            <div class="footer_section">
+                <h3 class="footer_title">Yatra<span> Sathi</span></h3>
+                <p class="footer_desc">Your trusted travel companion for discovering amazing destinations and creating unforgettable memories around the world.</p>
+                <div class="footer_social">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer_section">
+                <h4 class="footer_heading">Quick Links</h4>
+                <ul class="footer_links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer_section">
+                <h4 class="footer_heading">Services</h4>
+                <ul class="footer_links">
+                    <li><a href="#">Flight Booking</a></li>
+                    <li><a href="#">Hotel Booking</a></li>
+                    <li><a href="#">Tour Packages</a></li>
+                    <li><a href="#">Travel Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer_section">
+                <h4 class="footer_heading">Contact Info</h4>
+                <div class="footer_contact">
+                    <p><i class="fa-solid fa-location-dot"></i> 123 Travel Street, Adventure City</p>
+                    <p><i class="fa-solid fa-phone"></i> +91 87776 84358</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@yatrasathi.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>&copy; 2025 Yatra Sathi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="swiper.js"></script>
+    <script src="favorites.js"></script>
+    <script src="search.js"></script>
+    <script src="counter.js"></script>
+
+    <script>
+        // Mobile navigation fix
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.header_nav a');
+            const headerNav = document.getElementById('headerNav');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (headerNav.classList.contains('active')) {
+                        headerNav.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
