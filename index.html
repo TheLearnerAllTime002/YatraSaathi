@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="ai-quote.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js" type="module"></script>
 </head>
 
 <body>
@@ -23,6 +24,15 @@
             <li><a href="#destination">Destinations</a></li>
             <li><a href="#services">Services</a></li>
         </ul>
+        
+        <div class="lang_dropdown" id="langDropdown">
+            <button class="lang_btn" id="langBtn">
+                <i class="fa-solid fa-globe"></i>
+                <span id="currentLang">EN</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="lang_menu" id="langMenu"></div>
+        </div>
 
         <!-- for mobile screen -->
         <div class="header_menu" id="toggleMenu">
@@ -32,9 +42,9 @@
     </header>
 
     <!-- Home -->
-    <section class="home" id="home">
+     <section class="home" id="home">
         <div class="home_content">
-            <h2 class="home_small-title small-title">Yatra<span> Sathi</span></h2>
+            <h2 class="home_small-title small-title">Yatra <span> Sathi</span></h2>
             <h1 class="home_title title">Find Your Next Dream Destinations</h1>
             <p class="home_desc desc">Embark on extraordinary adventures and discover breathtaking destinations around the world. Let us guide you to your next unforgettable journey with personalized travel experiences.</p>
             <a href="#about">
@@ -44,6 +54,8 @@
                 </button>
             </a>
         </div>
+
+
 
         <div class="home_cards">
             <div class="home_card home_card-1">
@@ -322,6 +334,7 @@
     <script src="favorites.js"></script>
     <script src="search.js"></script>
     <script src="counter.js"></script>
+    <script src="translate.js"></script>
 
     <script>
         // Mobile navigation fix

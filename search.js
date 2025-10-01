@@ -114,10 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
         searchResults.scrollIntoView({ behavior: 'smooth' });
 
         try {
+            // Add delay to show animation
             const [images, weather, recommendations] = await Promise.all([
                 fetchUnsplashImages(query),
                 fetchWeatherData(query),
-                fetchGeminiRecommendations(query)
+                fetchGeminiRecommendations(query),
+                new Promise(resolve => setTimeout(resolve, 2000)) // 2 second delay
             ]);
 
             console.log('Search results:', { images: images?.length, weather: !!weather, recommendations });
@@ -131,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function showLoading() {
         resultsContainer.innerHTML = `
             <div class="loading">
-                <div class="spinner"></div>
-                <p style="margin-top: 1rem; color: #666;">Searching destinations...</p>
+                <dotlottie-wc src="https://lottie.host/e7125e64-74bd-4732-bb19-87e2aafb5d2a/5RmW4UGyWf.lottie" class="search_lottie" autoplay loop></dotlottie-wc>
+                <p style="margin-top: 1rem; color: #666; font-size: 1.1rem; font-weight: 600;">Searching destinations...</p>
             </div>
         `;
     }
