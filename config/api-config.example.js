@@ -1,5 +1,5 @@
-// API Configuration Template
-// Copy this file to api-config.js and add your actual API keys
+
+
 const API_CONFIG = {
     TRANSLATION_SERVICE_KEY: 'YOUR_GOOGLE_TRANSLATE_API_KEY',
     TRANSLATION_ENDPOINT: 'https://translation.googleapis.com/language/translate/v2',
