@@ -18,7 +18,7 @@
 
 <div align="center">
 
-### [🌐 **Experience Yatra Sathi Live**](https://yatrasaathi.netlify.app/)
+### [🌐 **Experience Yatra Sathi Live**](https://yatra-saathi.vercel.app/)
 
 *Click above to explore the world of travel!*
 
