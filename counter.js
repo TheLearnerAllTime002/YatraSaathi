@@ -1,8 +1,10 @@
 // Counter Animation
+let counterObserver;
+let hasAnimated = false;
+
 function animateCounters(parentElement) {
-    const counters = parentElement.querySelectorAll('.counter:not(.animated)');
+    const counters = parentElement.querySelectorAll('.counter');
     counters.forEach(counter => {
-        counter.classList.add('animated');
         const target = parseFloat(counter.getAttribute('data-target'));
         const increment = target > 0 ? target / 50 : 1;
         let current = 0;
@@ -19,16 +21,36 @@ function animateCounters(parentElement) {
     });
 }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            setTimeout(() => animateCounters(entry.target), 500);
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
+function initCounters() {
+    if (counterObserver) {
+        counterObserver.disconnect();
+    }
+    
+    counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+                setTimeout(() => animateCounters(entry.target), 500);
+            }
+        });
+    }, { threshold: 0.5 });
 
-document.addEventListener('DOMContentLoaded', () => {
     const aboutSection = document.querySelector('.about');
-    if (aboutSection) observer.observe(aboutSection);
-});
+    if (aboutSection) {
+        counterObserver.observe(aboutSection);
+    }
+}
+
+function resetCounters() {
+    hasAnimated = false;
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+        counter.textContent = '0';
+    });
+    initCounters();
+}
+
+document.addEventListener('DOMContentLoaded', initCounters);
+
+// Global function to reset counters after translation
+window.resetCounters = resetCounters;

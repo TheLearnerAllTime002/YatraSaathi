@@ -90,12 +90,15 @@ class LanguageTranslator {
             alert('Translation failed. Please try again.');
         } finally {
             this.showLoading(false);
-            // Reinitialize scroll animations after translation
-            if (window.reinitScrollReveal) {
-                setTimeout(() => {
+            // Reinitialize animations after translation
+            setTimeout(() => {
+                if (window.reinitScrollReveal) {
                     window.reinitScrollReveal();
-                }, 100);
-            }
+                }
+                if (window.resetCounters) {
+                    window.resetCounters();
+                }
+            }, 100);
         }
     }
 
