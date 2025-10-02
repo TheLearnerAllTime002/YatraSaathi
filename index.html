@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js" type="module"></script>
+
     <script src="config/api-config.js"></script>
+    <script src="forecast-chart.js"></script>
+    <script src="travel-planner.js"></script>
 </head>
 
 <body>
@@ -68,6 +71,17 @@
             <div class="home_card home_card-3">
                 <h3 class="home_card-title">Koh Tonsay</h3>
             </div>
+        </div>
+    </section>
+
+    <!-- Search Results -->
+    <section class="search_results" id="searchResults" style="display: none;">
+        <button class="close_search" id="closeSearch">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2 class="search_results_title">Search Results</h2>
+        <div class="search_results_container" id="searchResultsContainer">
+            <!-- Results will be populated here -->
         </div>
     </section>
 

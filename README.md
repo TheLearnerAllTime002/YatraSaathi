@@ -35,7 +35,8 @@
 ### 🎯 **Core Features**
 - 🔍 **Smart Search** - AI-powered destination discovery with Lottie animations
 - 🌐 **Multi-Language Support** - 13 Indian regional languages with Google Translate API
-- 🌤️ **Weather Integration** - Real-time weather forecasts
+- 🌤️ **Weather Integration** - Real-time weather forecasts with animated charts
+- 🧭 **Smart Travel Planning** - Weather-based travel recommendations
 - ❤️ **Favorites System** - Save your dream destinations with timestamps
 - 📱 **Responsive Design** - Perfect on all devices
 - 🎨 **Indian Aesthetic** - Beautiful Indic design elements
@@ -46,6 +47,8 @@
 ### 🚀 **Advanced Features**
 - 🌐 **Real-time Translation** - Instant language switching with content preservation
 - 🖼️ **Dynamic Images** - Stunning destination photos from Unsplash API
+- 📊 **Interactive Charts** - Animated SVG weather forecast visualization
+- 💬 **Quote-Style Recommendations** - Inspirational travel advice based on weather
 - 💫 **Lottie Animations** - Modern loading animations and micro-interactions
 - 🎭 **Interactive UI** - Glassmorphic design with smooth transitions
 - 🌈 **Modern Gradients** - Eye-catching orange-themed color schemes
@@ -98,13 +101,19 @@ Yatra Sathi/
 ├── 📄 index.html          # Main HTML file with language dropdown
 ├── 🎨 style.css           # Main stylesheet with glassmorphic design
 ├── 🎨 base.css            # Base styles & CSS variables
+├── 🎨 ai-quote.css        # AI quote styling
 ├── ⚡ script.js           # Core JavaScript functionality
 ├── 🌐 translate.js        # Google Translate API integration
-├── 🔍 search.js           # Search with Lottie animations
+├── 🔍 search.js           # Search with weather integration
+├── 📊 forecast-chart.js   # Animated SVG weather charts
+├── 🧭 travel-planner.js   # Smart travel recommendations
 ├── ❤️ favorites.js        # Favorites system with timestamps
 ├── 🎭 navigation.js       # Navigation logic
 ├── 🎪 swiper.js          # Carousel functionality
 ├── 📱 scrollreveal.js     # Scroll animations
+├── 🔢 counter.js          # Counter animations
+├── ⚙️ config/            # API configuration
+│   └── api-config.js
 └── 🖼️ images/            # Image assets
     ├── penida-island.jpg
     ├── khao-sok.jpg
@@ -140,7 +149,9 @@ Our design embraces the rich cultural heritage of India with:
 | 🌐 Translation | 13 Indian languages with Google Translate API | ✅ Complete |
 | 🔍 Smart Search | Lottie-animated destination discovery | ✅ Complete |
 | ❤️ Favorites | LocalStorage with date timestamps | ✅ Complete |
-| 🌤️ Weather API | Real-time weather integration | ✅ Complete |
+| 🌤️ Weather API | Real-time weather integration with charts | ✅ Complete |
+| 🧭 Travel Planning | AI-powered weather-based recommendations | ✅ Complete |
+| 📊 Forecast Charts | Animated SVG temperature visualization | ✅ Complete |
 | 📱 Responsive | Mobile-first responsive design | ✅ Complete |
 | 🎨 Animations | Lottie & CSS animations | ✅ Complete |
 

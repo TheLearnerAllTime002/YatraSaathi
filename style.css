@@ -2365,6 +2365,263 @@ html {
     animation: heartBeat 0.6s ease;
 }
 
+/* Forecast Chart Styles */
+.forecast_chart_container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 240, 0.9));
+    border-radius: 20px;
+    border: 2px solid rgba(255, 153, 51, 0.1);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+}
+
+.forecast_chart_title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.forecast_chart_title i {
+    color: #FF6B35;
+    font-size: 1.4rem;
+    animation: chartPulse 2s ease-in-out infinite;
+}
+
+@keyframes chartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.forecast_chart {
+    width: 100%;
+    height: 350px;
+    background: white;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 153, 51, 0.1);
+}
+
+/* Responsive chart adjustments */
+@media screen and (max-width: 768px) {
+    .forecast_chart {
+        height: 280px;
+        padding: 0.5rem;
+    }
+    
+    .forecast_chart_title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .forecast_chart_container {
+        margin: 1.5rem 0;
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .forecast_chart {
+        height: 250px;
+        padding: 0.3rem;
+    }
+    
+    .forecast_chart_title {
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Travel Planning Styles */
+.travel_planning {
+    background: linear-gradient(145deg, #ffffff, #fff8f0);
+    border-radius: 25px;
+    padding: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 60px rgba(255, 107, 53, 0.15), 0 0 0 1px rgba(255, 153, 51, 0.1);
+    border: 2px solid rgba(255, 153, 51, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.travel_planning::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FF6B35, #F7931E, #FF9933);
+    border-radius: 25px 25px 0 0;
+}
+
+.travel_title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.travel_title i {
+    color: #FF6B35;
+    font-size: 1.8rem;
+    animation: routePulse 2s ease-in-out infinite;
+}
+
+@keyframes routePulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+}
+
+.travel_quote {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 240, 0.9));
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 153, 51, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.quote_icon {
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.quote_icon i {
+    color: white;
+    font-size: 1.5rem;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.quote_content {
+    flex: 1;
+}
+
+.quote_title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+}
+
+.quote_text {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.weather_summary {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.summary_item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 107, 53, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.summary_item i {
+    color: #FF6B35;
+}
+
+.travel_advice {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.advice_item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 153, 51, 0.1);
+    transition: all 0.3s ease;
+}
+
+.advice_item:hover {
+    background: rgba(255, 248, 240, 0.9);
+    transform: translateX(5px);
+    border-color: rgba(255, 153, 51, 0.3);
+}
+
+.advice_item i {
+    color: #FF6B35;
+    font-size: 0.9rem;
+    width: 16px;
+}
+
+.advice_item span {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+@media screen and (max-width: 768px) {
+    .travel_quote {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .quote_icon {
+        align-self: center;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .weather_summary {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .travel_planning {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
 /* Mobile Responsive */
 @media screen and (max-width: 767px) {
     .search_results_container {

@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchWeatherData(query) {
         try {
-            const geoResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=1&appid=${openWeatherApiKey}`);
+            const geoResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=5&appid=${openWeatherApiKey}`);
             if (!geoResponse.ok) throw new Error('Geo API failed');
             const geoData = await geoResponse.json();
             
@@ -172,10 +172,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 return null;
             }
             
-            const { lat, lon } = geoData[0];
+            // Find exact match or best match for the query
+            let bestMatch = geoData[0];
+            const queryLower = query.toLowerCase();
+            
+            for (const location of geoData) {
+                const locationName = location.name.toLowerCase();
+                const fullName = `${location.name}, ${location.country}`.toLowerCase();
+                
+                // Exact name match gets priority
+                if (locationName === queryLower || fullName.includes(queryLower)) {
+                    bestMatch = location;
+                    break;
+                }
+            }
+            
+            const { lat, lon } = bestMatch;
             const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openWeatherApiKey}&units=metric`);
             if (!weatherResponse.ok) throw new Error('Weather API failed');
             const weatherData = await weatherResponse.json();
+            
+            // Add the matched location name to weather data
+            weatherData.searchedLocation = bestMatch.name;
             
             return weatherData;
         } catch (error) {
@@ -273,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fa-solid fa-cloud-sun"></i> Weather Forecast
                 </h3>
                 <div class="weather_current">
-                    <div class="weather_location">${weather.city?.name || query}</div>
+                    <div class="weather_location">${weather.searchedLocation || weather.city?.name || query}</div>
                     <div class="weather_temp"><span class="counter" data-target="${Math.round(weather.list[0].main.temp)}">0</span>°C</div>
                     <div class="weather_desc">${weather.list[0].weather[0].description}</div>
                     <div class="weather_details">
@@ -299,15 +317,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>
-                <div class="weather_forecast">
-                    ${weather.list.slice(0, 7).map((day, index) => `
-                        <div class="weather_day">
-                            <span>${new Date(day.dt * 1000).toLocaleDateString('en', { weekday: 'short' })}</span>
-                            <span>${Math.round(day.main.temp)}°C</span>
-                            <span>${day.weather[0].main}</span>
-                        </div>
-                    `).join('')}
+                <div class="forecast_chart_container">
+                    <h4 class="forecast_chart_title">
+                        <i class="fa-solid fa-chart-line"></i> 7-Day Temperature Forecast
+                    </h4>
+                    <div id="forecast-chart-${Date.now()}" class="forecast_chart"></div>
                 </div>
+
             </div>
         ` : `
             <div class="weather_widget">
@@ -324,6 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <div>
                 <div class="destination_cards">
                     ${destinationCards}
+                </div>
+                <div class="travel_planning">
+                    <h3 class="travel_title">
+                        <i class="fa-solid fa-route"></i> Smart Travel Planning
+                    </h3>
+                    <div id="travel-recommendations-${Date.now()}" class="travel_content"></div>
                 </div>
             </div>
             <div>
@@ -348,6 +370,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
 
         // Animate counters
-        animateCounters(resultsContainer);
+        setTimeout(() => {
+            if (typeof animateCounters === 'function') {
+                animateCounters(resultsContainer);
+            }
+        }, 200);
+        
+        // Render forecast chart and travel planning if weather data is available
+        if (weather && weather.list) {
+            setTimeout(() => {
+                const chartContainer = resultsContainer.querySelector('.forecast_chart');
+                if (chartContainer && window.renderForecastChart) {
+                    window.renderForecastChart(chartContainer.id, weather);
+                }
+                
+                const travelContainer = resultsContainer.querySelector('.travel_content');
+                if (travelContainer && window.generateTravelPlan) {
+                    window.generateTravelPlan(travelContainer.id, weather, query);
+                }
+            }, 100);
+        }
     }
 });
