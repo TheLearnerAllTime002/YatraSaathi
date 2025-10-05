@@ -108,9 +108,62 @@
         height: 70px;
     }
 
-    .header_nav {
+    .header_menu {
+        display: block;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    .header.sticky .header_menu {
+        color: black;
+    }
+
+    .header_menu .fa-xmark {
         display: none;
-        /* Mobile menu will take over */
+    }
+
+    .header_nav {
+        position: absolute;
+        flex-direction: column;
+        top: 70px;
+        left: 0;
+        background: white;
+        width: 100%;
+        padding: 0;
+        height: 0;
+        overflow: hidden;
+        transition: 0.3s ease-out;
+        gap: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header_nav.active {
+        height: auto;
+        padding: 1rem 5%;
+    }
+
+    .header_nav.active ~ .header_menu .fa-bars {
+        display: none;
+    }
+
+    .header_nav.active ~ .header_menu .fa-xmark {
+        display: block;
+    }
+
+    .header_nav li {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 0.5rem;
+        border-radius: 8px;
+    }
+    
+    .header_nav li:last-child {
+        margin-bottom: 0;
+    }
+
+    .header_nav li a {
+        color: black;
     }
 
     .home {

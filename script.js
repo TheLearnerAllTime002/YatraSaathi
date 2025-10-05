@@ -5,6 +5,6 @@ window.addEventListener("scroll", () => {
 
 const toggleMenu = document.getElementById("toggleMenu");
 toggleMenu.addEventListener("click", () => {
-const headerNav = document.getElementById("headerNav");
-headerNav.classList.toggle("active");
-})
+    const headerNav = document.getElementById("headerNav");
+    headerNav.classList.toggle("active");
+});
