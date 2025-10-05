@@ -145,7 +145,7 @@ class FavoritesManager {
         setTimeout(() => {
             const destinationCards = document.querySelectorAll('.swiper-slide_container');
             destinationCards.forEach(card => {
-                // Skip if button already exists
+                
                 if (card.querySelector('.favorite-btn')) return;
                 
                 const title = card.querySelector('.swiper-slide_content-title')?.textContent;
